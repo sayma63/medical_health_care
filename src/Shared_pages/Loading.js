@@ -1,9 +1,10 @@
 import React from 'react';
+import {Spinner} from 'react-bootstrap'
 
 const Loading = () => {
     return (
-        <div>
-            
+        <div className='p-5'>
+             <Spinner animation="border" variant="info" />
         </div>
     );
 };
