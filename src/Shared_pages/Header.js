@@ -8,7 +8,7 @@ import './Header.css'
 const Header = () => {
     return (
         <>
-        <Navbar collapseOnSelect expand="lg"  className='background-color'>
+        <Navbar collapseOnSelect sticky='top' expand="lg"  className='background-color'>
   <Container>
   <Navbar.Brand as={Link} to='/' href="#home"><span style={{color:'pink'}} className='fs-3'>Health</span> <span className='text-info fs-4'>Care</span></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />

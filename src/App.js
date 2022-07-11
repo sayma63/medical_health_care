@@ -11,6 +11,7 @@ import Login from './Pages/Login';
 import Services from './Pages/Home/Services';
 import Loading from './Shared_pages/Loading';
 import NotFound from './Shared_pages/NotFound';
+import Footer from './Shared_pages/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Route path='loading' element={<Loading></Loading>}></Route>
       <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
+     <Footer></Footer>
     </div>
   );
 }
