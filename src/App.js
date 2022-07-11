@@ -12,6 +12,7 @@ import Services from './Pages/Home/Services';
 import Loading from './Shared_pages/Loading';
 import NotFound from './Shared_pages/NotFound';
 import Footer from './Shared_pages/Footer';
+import Blogs from './Pages/Blogs';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path='contact' element={<Contact></Contact>}></Route>
       <Route path='about' element={<About></About>}></Route>
       <Route path='login' element={<Login></Login>}></Route>
+      <Route path='blogs' element={<Blogs></Blogs>}></Route>
       <Route path='services' element={<Services></Services>}></Route>
       <Route path='loading' element={<Loading></Loading>}></Route>
       <Route path='*' element={<NotFound></NotFound>}></Route>
