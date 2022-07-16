@@ -12,11 +12,15 @@ const Register = () => {
   }
   const handleRegister=event=>{
     event.preventDefault();
+    const name=event.target.name.value;
+    const email=event.target.email.value;
+    const password=event.target.password.value;
+    
   }
     return (
         <div className='register-form'>
             <h2 className='text-center text-primary mt-2 mb-3'>Please Register</h2>
-            <form action="">
+            <form onSubmit={handleRegister} action="">
                 <input type='text' name='name' placeholder='Your name'></input>
                 <input type="email" name="email" id="" placeholder='Email Address' required />
                   
