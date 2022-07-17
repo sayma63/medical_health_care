@@ -14,6 +14,7 @@ import NotFound from './Shared_pages/NotFound';
 import Footer from './Shared_pages/Footer';
 import Blogs from './Pages/Blogs';
 import Register from './Pages/Register';
+import Checkout from './Pages/Checkout';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path='login' element={<Login></Login>}></Route>
       <Route path='register' element={<Register></Register>}></Route>
       <Route path='blogs' element={<Blogs></Blogs>}></Route>
+      <Route path='checkout' element={<Checkout></Checkout>}></Route>
       <Route path='services' element={<Services></Services>}></Route>
       <Route path='loading' element={<Loading></Loading>}></Route>
       <Route path='*' element={<NotFound></NotFound>}></Route>
