@@ -1,10 +1,14 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from 'react-router-dom'
 
 const Shipment = () => {
+    const navigate=useNavigate()
     const handleButton=()=>{
-        toast('Thank You for booking')
+        // toast('Thank You for booking')
+         navigate('/home')
+        
     }
     return (
         <div className='register-form'>

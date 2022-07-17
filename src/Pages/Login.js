@@ -3,9 +3,10 @@ import './Login.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import{useNavigate}from 'react-router-dom'
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import auth from '../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const [
@@ -14,11 +15,14 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
+      const location=useLocation();
+    let from = location.state?.from?.pathname || "/";
     const emailRef=useRef('');
     const passwordRef=useRef('');
     const navigate=useNavigate();
     if(user){
-        navigate('/home')
+        navigate(from,{replace:true})
+        
     }
     const handleSubmit=(event)=>{
         event.preventDefault();
@@ -33,16 +37,14 @@ const Login = () => {
         navigate('/register')
     }
     return (
-        <div className='mt-2'>
+        <div className='mt-2 mx-auto w-50'>
             <h1 className='text-primary text-center'>Please Login</h1>
                   
-            <Form onSubmit={handleSubmit} className='mx-auto w-50'>
+            <Form onSubmit={handleSubmit} >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+        
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -56,7 +58,8 @@ const Login = () => {
         Submit
       </Button>
     </Form>
-    <p className='mx-auto w-50'>New to Medical Health Care? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link></p>
+    <p >New to Medical Health Care? <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link></p>
+    <SocialLogin></SocialLogin>
 
  
 
