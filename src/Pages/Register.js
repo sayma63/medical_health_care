@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Register.css'
 import { Link } from 'react-router-dom';
 import{useNavigate}from 'react-router-dom'
@@ -8,6 +8,7 @@ import SocialLogin from './SocialLogin';
 
 
 const Register = () => {
+    const [agree,setAgree]=useState(false)
     const [
         createUserWithEmailAndPassword,
         user,
@@ -28,8 +29,12 @@ const Register = () => {
     const name=event.target.name.value;
     const email=event.target.email.value;
     const password=event.target.password.value;
+    // const agree=event.target.terms.checked;
+    if(agree){
+        createUserWithEmailAndPassword(email,password)
+    }
     
-    createUserWithEmailAndPassword(email,password)
+
     
   }
     return (
@@ -40,7 +45,10 @@ const Register = () => {
                 <input type="email" name="email" id="" placeholder='Email Address' required />
                   
                   <input type="password" name="password" id="" placeholder='Password' required/>
-                  <input className='bg-primary rounded-pill' type="submit" value="Register" />
+                  <input onClick={()=>setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+                  <label className={`ps-2 ${agree?'':'text-danger'}`} htmlFor="terms"> Accepts Medical health care terms and conditions</label>
+                  {/* <label className={agree?'ps-2 text-primary':'ps-2 text-danger'} htmlFor="terms"> Accepts Medical health care terms and conditions</label> */}
+                  <input disabled={!agree} className='bg-primary rounded-pill mt-1' type="submit" value="Register" />
 
 
             </form>
