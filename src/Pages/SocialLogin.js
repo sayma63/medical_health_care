@@ -4,25 +4,26 @@ import logo2 from '../Images/facebook.png'
 import logo3 from '../Images/github.png'
 import auth from '../firebase.init';
 import{useNavigate}from 'react-router-dom'
-import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared_pages/Loading';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
     const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);
+    const [signInWithFacebook, user3, loading3, error3] = useSignInWithFacebook(auth);
     const navigate=useNavigate();
     let errorElement;
     if (error1||error2) {
         
       errorElement=    <div>
-            <p className='text-danger'>Error: {error1?.message} {error2?.message}</p>
+            <p className='text-danger'>Error: {error1?.message} {error2?.message} {error3?.message}</p>
           </div>
         
       }
-      if(loading1 || loading2){
+      if(loading1 || loading2||loading3){
         return <Loading></Loading>
       }
-      if(user1||user2){
+      if(user1||user2||user3){
        navigate('/home')
       }
     return (
@@ -40,7 +41,7 @@ const SocialLogin = () => {
                     </button>
             </div>
             <div  className=' d-flex justify-content-center '>
-                <button className='w-50 btn btn-info mb-3  '>
+                <button onClick={()=>signInWithFacebook()}  className='w-50 btn btn-info mb-3  '>
                     <img style={{width:'40px'}} src={logo2} alt="" className='px-2' />
                     FaceBook Sign In
                     </button>
